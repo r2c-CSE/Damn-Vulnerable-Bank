@@ -21,6 +21,10 @@ pipeline {
     }
     stages {
       stage('Semgrep-Scan') {
+         sh "echo: $SEMGREP_REPO_NAME"
+         sh "echo: $SEMGREP_REPO_URL"
+      }
+      stage('Semgrep-Scan') {
         steps {
             sh '''docker pull returntocorp/semgrep && \
             docker run \
