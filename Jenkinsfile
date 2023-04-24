@@ -22,8 +22,8 @@ pipeline {
     stages {
       stage('Print-Scan') {
         steps {
-         sh "echo: $SEMGREP_REPO_NAME"
-         sh "echo: $SEMGREP_REPO_URL"
+         sh '''echo: $SEMGREP_REPO_NAME'''
+         sh '''echo: $SEMGREP_REPO_URL'''
         }
       }
       stage('Semgrep-Scan') {
