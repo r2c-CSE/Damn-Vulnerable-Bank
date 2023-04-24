@@ -6,7 +6,7 @@ pipeline {
 
       // Uncomment the following line to scan changed 
       // files in PRs or MRs (diff-aware scanning): 
-      SEMGREP_BASELINE_REF = "main"
+      SEMGREP_BASELINE_REF = "master"
 
       // Troubleshooting:
 
