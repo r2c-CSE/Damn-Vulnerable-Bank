@@ -20,7 +20,7 @@ pipeline {
       SEMGREP_PR_ID = "${env.CHANGE_ID}"
     }
     stages {
-      stage('Semgrep-Scan') {
+      stage('Print-Scan') {
          sh "echo: $SEMGREP_REPO_NAME"
          sh "echo: $SEMGREP_REPO_URL"
       }
