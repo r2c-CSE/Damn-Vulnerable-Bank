@@ -32,7 +32,7 @@ pipeline {
             -e SEMGREP_COMMIT=$SEMGREP_COMMIT \
             -e SEMGREP_PR_ID=$SEMGREP_PR_ID \
             -v "$(pwd):$(pwd)" --workdir $(pwd) \
-            returntocorp/semgrep semgrep ci '''
+            returntocorp/semgrep semgrep ci --oss-only --verbose'''
       }
     }
   }
