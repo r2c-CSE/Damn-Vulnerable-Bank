@@ -4,7 +4,7 @@ jobs:
     parameters:
       default_branch:
         type: string
-        default: main
+        default: master
     environment:
       # Uncomment the following line to scan changed 
       # files in PRs or MRs (diff-aware scanning): 
@@ -40,5 +40,5 @@ workflows:
   main:
     jobs:
       - semgrep-scan:
-        context:
-          - dev
+          context:
+            - dev
