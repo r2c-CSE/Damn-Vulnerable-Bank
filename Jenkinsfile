@@ -15,7 +15,6 @@ pipeline {
       SEMGREP_JOB_URL = "${BUILD_URL}"
       SEMGREP_COMMIT = "${GIT_COMMIT}"
       SEMGREP_BRANCH = "${GIT_BRANCH}"
-      SEMGREP_REPO_NAME = "from-jenkins/Vulnerable-Bank"
       SEMGREP_REPO_URL = env.GIT_URL.replaceFirst(/^(.*).git$/,'$1')
       SEMGREP_PR_ID = "${env.CHANGE_ID}"
     }
@@ -27,7 +26,6 @@ pipeline {
             -e SEMGREP_APP_TOKEN=$SEMGREP_APP_TOKEN \
             -e SEMGREP_REPO_URL=$SEMGREP_REPO_URL \
             -e SEMGREP_BRANCH=$SEMGREP_BRANCH \
-            -e SEMGREP_REPO_NAME=$SEMGREP_REPO_NAME \
             -e SEMGREP_BRANCH=$SEMGREP_BRANCH \
             -e SEMGREP_COMMIT=$SEMGREP_COMMIT \
             -e SEMGREP_PR_ID=$SEMGREP_PR_ID \
