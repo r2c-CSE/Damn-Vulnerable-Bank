@@ -5,7 +5,7 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 public class App5
 {
 
-    static String secret = "secret2";
+    static String secret = "secret28";
 
     private static void bad1() {
         try {
