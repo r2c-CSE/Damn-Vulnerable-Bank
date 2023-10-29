@@ -21,25 +21,26 @@ pipeline {
     stages {
       stage('Semgrep-Scan') {
         steps {
-          if (env.CHANGE_ID) {
-            sh '''docker pull returntocorp/semgrep && \
-            docker run \
-            -e SEMGREP_APP_TOKEN=$SEMGREP_APP_TOKEN \
-            -e SEMGREP_REPO_URL=$SEMGREP_REPO_URL \
-            -e SEMGREP_BRANCH=$SEMGREP_BRANCH \
-            -e SEMGREP_COMMIT=$SEMGREP_COMMIT \
-            -e SEMGREP_PR_ID=$SEMGREP_PR_ID \
-            -v "$(pwd):$(pwd)" --workdir $(pwd) \
-            returntocorp/semgrep semgrep ci'''
+          script {
+            if (env.CHANGE_ID) {
+              sh '''docker pull returntocorp/semgrep && \
+              docker run \
+              -e SEMGREP_APP_TOKEN=$SEMGREP_APP_TOKEN \
+              -e SEMGREP_REPO_URL=$SEMGREP_REPO_URL \
+              -e SEMGREP_BRANCH=$SEMGREP_BRANCH \
+              -e SEMGREP_COMMIT=$SEMGREP_COMMIT \
+              -e SEMGREP_PR_ID=$SEMGREP_PR_ID \
+              -v "$(pwd):$(pwd)" --workdir $(pwd) \
+              returntocorp/semgrep semgrep ci'''
+            }
+            else {
+              sh '''docker pull returntocorp/semgrep && \
+              docker run \
+              -e SEMGREP_APP_TOKEN=$SEMGREP_APP_TOKEN \
+              -v "$(pwd):$(pwd)" --workdir $(pwd) \
+              returntocorp/semgrep semgrep ci'''
+            }
           }
-          else {
-            sh '''docker pull returntocorp/semgrep && \
-            docker run \
-            -e SEMGREP_APP_TOKEN=$SEMGREP_APP_TOKEN \
-            -v "$(pwd):$(pwd)" --workdir $(pwd) \
-            returntocorp/semgrep semgrep ci'''
-          }
-          
       }
     }
   }
