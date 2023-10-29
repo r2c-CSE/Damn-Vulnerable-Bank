@@ -1,11 +1,13 @@
+package jwt_test.jwt_test_1;
+
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 
-public class App5
+public class App
 {
 
-    static String secret = "secret28";
+    static String secret = "secret";
 
     private static void bad1() {
         try {
