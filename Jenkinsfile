@@ -21,6 +21,7 @@ pipeline {
     stages {
       stage('Semgrep-Scan') {
         steps {
+          if (env.CHANGE_ID) {
             sh '''docker pull returntocorp/semgrep && \
             docker run \
             -e SEMGREP_APP_TOKEN=$SEMGREP_APP_TOKEN \
@@ -30,6 +31,15 @@ pipeline {
             -e SEMGREP_PR_ID=$SEMGREP_PR_ID \
             -v "$(pwd):$(pwd)" --workdir $(pwd) \
             returntocorp/semgrep semgrep ci'''
+          }
+          else {
+            sh '''docker pull returntocorp/semgrep && \
+            docker run \
+            -e SEMGREP_APP_TOKEN=$SEMGREP_APP_TOKEN \
+            -v "$(pwd):$(pwd)" --workdir $(pwd) \
+            returntocorp/semgrep semgrep ci'''
+          }
+          
       }
     }
   }
