@@ -25,7 +25,8 @@ const validateUserToken = function(req, res, next) {
       return res.json(encryptResponse(r));
   }
 
-  jwt.verify(token, "secret", (err, data) => {
+  String var1 = System.getProperty("var1","var1");
+  jwt.verify(token, var1, (err, data) => {
       if (err) {
           r.status = statusCodes.FORBIDDEN;
           r.data = {
